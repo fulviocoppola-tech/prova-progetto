@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20250910145008"
+  },
+  "applications": "*",
+  "clientRootFolder": "provaProgetto",
+  "databaseType": "sql",
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "orderDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "microserviceName": "provaProgetto",
+  "name": "Order",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "customer",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

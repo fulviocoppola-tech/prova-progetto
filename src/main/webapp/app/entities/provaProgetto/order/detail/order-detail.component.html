@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (order(); as orderRef) {
+      <div>
+        <h2 data-cy="orderDetailsHeading"><span jhiTranslate="provaProgettoApp.provaProgettoOrder.detail.title">Order</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ orderRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="provaProgettoApp.provaProgettoOrder.orderDate">Order Date</span></dt>
+          <dd>
+            <span>{{ orderRef.orderDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="provaProgettoApp.provaProgettoOrder.totalAmount">Total Amount</span></dt>
+          <dd>
+            <span>{{ orderRef.totalAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="provaProgettoApp.provaProgettoOrder.customer">Customer</span></dt>
+          <dd>
+            @if (order()!.customer) {
+              <div>
+                <a [routerLink]="['/provaprogetto/customer', order()!.customer?.id, 'view']">{{ orderRef.customer?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Indietro</span>
+        </button>
+
+        <button type="button" [routerLink]="['/provaprogetto/order', orderRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Modifica</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

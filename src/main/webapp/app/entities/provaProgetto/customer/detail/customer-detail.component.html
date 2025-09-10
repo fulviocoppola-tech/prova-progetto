@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (customer(); as customerRef) {
+      <div>
+        <h2 data-cy="customerDetailsHeading"><span jhiTranslate="provaProgettoApp.provaProgettoCustomer.detail.title">Customer</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ customerRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="provaProgettoApp.provaProgettoCustomer.firstName">First Name</span></dt>
+          <dd>
+            <span>{{ customerRef.firstName }}</span>
+          </dd>
+          <dt><span jhiTranslate="provaProgettoApp.provaProgettoCustomer.lastName">Last Name</span></dt>
+          <dd>
+            <span>{{ customerRef.lastName }}</span>
+          </dd>
+          <dt><span jhiTranslate="provaProgettoApp.provaProgettoCustomer.email">Email</span></dt>
+          <dd>
+            <span>{{ customerRef.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="provaProgettoApp.provaProgettoCustomer.phoneNumber">Phone Number</span></dt>
+          <dd>
+            <span>{{ customerRef.phoneNumber }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Indietro</span>
+        </button>
+
+        <button type="button" [routerLink]="['/provaprogetto/customer', customerRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Modifica</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
