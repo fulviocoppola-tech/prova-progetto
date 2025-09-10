@@ -1,0 +1,23 @@
+// File: domain.jdl
+
+// Definizione delle entità
+entity Customer {
+    firstName String required,
+    lastName String required,
+    email String unique,
+    phoneNumber String
+}
+
+entity Order {
+    orderDate LocalDate required,
+    totalAmount BigDecimal required min(0)
+}
+
+// Definizione delle relazioni
+relationship OneToMany {
+    Customer{order(orderDate)} to Order{customer}
+}
+
+// Opzioni di paginazione e servizio
+paginate Customer, Order with pagination
+service Customer, Order with serviceClass
